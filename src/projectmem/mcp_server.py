@@ -154,7 +154,7 @@ mcp = FastMCP(
         "directly via filesystem write:\n"
         "  - On a bug discovery → log_issue(summary, location).\n"
         "  - After each fix attempt → _attempt(summary, outcome).\n"
-        "  - After confirmation → _fix(summary).\n"
+        "  - After confirmation → record_fix(summary, issue_id?) when fixing a specific issue, otherwise record_fix(summary).\n"
         "  - On a design choice → add_decision(summary).\n"
         "  - On a gotcha / setup detail → add_note(summary).\n"
         "Editing .projectmem/summary.md or .projectmem/PROJECT_MAP.md\n"
