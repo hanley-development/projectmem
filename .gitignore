@@ -109,3 +109,9 @@ poster resource /
 *.out
 *.bbl
 *.blg
+
+.projectmem/events.jsonl
+.projectmem/watch.pid
+.projectmem/watch.log
+CLAUDE.md
+AGENTS.md

@@ -46,7 +46,7 @@
 | Doc | What's in it |
 |---|---|
 | **[TUTORIAL.md](TUTORIAL.md)** | 15-minute step-by-step walkthrough — set up projectmem on your own project, watch the lifecycle, see the pre-commit warning fire. |
-| **[CHANGELOG.md](CHANGELOG.md)** | Release history. Latest: v0.1.4 — the accountable-judgment release: stale-memory detection, decision supersede, precheck snooze, `pjm brief`, failed-approach surfacing, CLAUDE.md export, dashboard Overview. |
+| **[CHANGELOG.md](CHANGELOG.md)** | Release history. Latest: v0.1.5 — MCP stdio timeout hardening, bounded git subprocesses, CP1252-safe brief output, and focused MCP regression tests. |
 | **[Research paper (arXiv:2606.12329)](https://arxiv.org/abs/2606.12329)** | *PROJECTMEM: A Local-First, Event-Sourced Memory and Judgment Layer for AI Coding Agents* — the peer-readable version: design, Memory-as-Governance framing, capability comparison, and the 207-event dogfooding study. |
 | **[LICENSE](LICENSE)** | MIT |
 
