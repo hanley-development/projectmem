@@ -531,6 +531,7 @@ def _get_staged_files(root: Path) -> list[str]:
             capture_output=True,
             text=True,
             timeout=5,
+            stdin=subprocess.DEVNULL,
         )
         return [f.strip() for f in result.stdout.strip().split("\n") if f.strip()]
     except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired):
@@ -551,6 +552,7 @@ def _git_recent_changes(file_path: str, days: int, root: Path | None = None) -> 
             capture_output=True,
             text=True,
             timeout=5,
+            stdin=subprocess.DEVNULL,
         )
     except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired):
         return None
@@ -567,6 +569,7 @@ def _get_working_tree_files(root: Path) -> list[str]:
             capture_output=True,
             text=True,
             timeout=5,
+            stdin=subprocess.DEVNULL,
         )
         return [f.strip() for f in result.stdout.strip().split("\n") if f.strip()]
     except (OSError, subprocess.CalledProcessError, subprocess.TimeoutExpired):

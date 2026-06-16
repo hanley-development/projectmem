@@ -39,7 +39,12 @@ def _event_ids(tmp_path) -> list[str]:
 
 def _git(tmp_path, *args):
     subprocess.run(
-        ["git", *args], cwd=tmp_path, check=True, capture_output=True, text=True
+        ["git", *args],
+        cwd=tmp_path,
+        check=True,
+        capture_output=True,
+        text=True,
+        stdin=subprocess.DEVNULL,
     )
 
 
@@ -273,6 +278,19 @@ def test_brief_runs_clean_on_fresh_project(tmp_path, monkeypatch):
     result = runner.invoke(app, ["brief"], catch_exceptions=False)
     assert result.exit_code == 0
     assert "none" in result.output  # empty sections degrade gracefully
+
+
+def test_brief_console_helpers_are_cp1252_safe(monkeypatch):
+    from projectmem.commands import brief
+
+    class Cp1252Stdout:
+        encoding = "cp1252"
+
+    monkeypatch.setattr(brief.sys, "stdout", Cp1252Stdout())
+
+    assert brief._rule() == "-" * 60
+    text = brief._console_safe("⚠ ─ projectmem brief — projectmem 📈")
+    text.encode("cp1252")
 
 
 # ── 5. Failed-approach surfacing ─────────────────────────────────────

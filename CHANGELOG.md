@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.1.5
+
+**MCP timeout hardening for stdio clients.** Projectmem's MCP tools now avoid letting git subprocesses inherit the MCP server's JSON-RPC stdin pipe, which could hang FastMCP stdio sessions on Windows even when the equivalent CLI command returned quickly.
+
+### Fixed
+
+- MCP-reachable git helpers now detach child-process stdin with `subprocess.DEVNULL`.
+- Git commit lookup on write paths is bounded with a timeout, so tools such as `add_note` and `record_fix` do not wait forever if git stalls.
+- `precheck_file` and related precheck helpers keep CLI behavior unchanged while hardening the MCP execution path.
+- `pjm brief` rendering is safe on CP1252 and other non-UTF-8 Windows consoles.
+- Windows hook-path tests tolerate environments where bash exits early on invalid inherited stdin.
+
+### Tests and docs
+
+- Added MCP stdio regression coverage for `precheck_file` and `add_note`.
+- Added focused subprocess tests for the MCP-reachable git helper calls.
+
 ## 0.1.4
 
 **The accountable-judgment release: memory that flags its own staleness instead of silently trusting (or deleting) it — plus a dashboard that opens on an all-at-a-glance Overview.** Six small features (~150 lines, no new dependencies, no schema breaks) sharpen what makes projectmem different: it never deletes a memory, it tells you when one may have gone stale, it lets you retire decisions without losing history, it lists what already failed before you try it again, it briefs you at session start, it snoozes politely when it's wrong, and it exports its judgment to CLAUDE.md for agents that don't speak MCP. Also bumps the version (the `__init__.py` / `pyproject.toml` mismatch is corrected to a single `0.1.4`).
