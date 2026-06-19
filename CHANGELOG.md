@@ -10,6 +10,7 @@
 - Git commit lookup on write paths is bounded with a timeout, so tools such as `add_note` and `record_fix` do not wait forever if git stalls.
 - `precheck_file` and related precheck helpers keep CLI behavior unchanged while hardening the MCP execution path.
 - `pjm brief` rendering is safe on CP1252 and other non-UTF-8 Windows consoles.
+- `pjm visualize` Story Map now links path-like `location` values even when they omit a `:line` suffix, so file-only events do not float disconnected from their file node.
 - Windows hook-path tests tolerate environments where bash exits early on invalid inherited stdin.
 
 ### Tests and docs
